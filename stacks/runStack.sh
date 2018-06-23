@@ -27,7 +27,7 @@ until [ -z "$(sudo docker network ls --filter label=com.docker.stack.namespace=$
   echo "wait for clearing network... ${limit}"
 done
 
-sudo docker stack deploy --with-registry-auth --compose-file $projectDir/stacks/Stackfile-hello.yml $stackName
+sudo docker stack deploy --with-registry-auth --compose-file $projectDir/stacks/Stackfile-REST.yml $stackName
 
 #view stack details
 sudo docker stack ls

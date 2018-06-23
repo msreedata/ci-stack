@@ -6,6 +6,9 @@ if [[ $projectDir && -d $projectDir ]];then
     sudo docker build --no-cache ./rest-client-node -t restnode:v2
     sudo docker build --no-cache ./rest-api-dotnet -t restdotnet:v2
 
+    sudo docker tag restnode:v2 linBox:5000/restnode:v2
+    sudo docker tag restdotnet:v2 linBox:5000/restdotnet:v2
+
     popd 
 
     sudo docker image ls

@@ -20,7 +20,7 @@ services:
     build:
       context: ./../rest-client-node
     ports:
-      - "80:4000"
+      - "90:4000"
     deploy:
       replicas: 3
       update_config:
