@@ -1,0 +1,87 @@
+{
+  "name": "REST Client v1",
+  "pages": [
+    {
+      "default": true,
+      "name": "Foods",
+      "id": "Foods",
+      "urlHost": "lindoce04:5001",
+      "description": "RESTful API Service client for .Net Core service",
+      "methods": {
+        "getAll": {
+          "label": "Get Food list",
+          "url": "https://:urlHost/api/v1/Foods",
+          "dataPath": "value",
+          "queryParams": [
+            {
+              "name": "q",
+              "value": "",
+              "label": "Query"
+            }
+          ],
+          "display": {
+            "type": "table",
+            "fields": [
+              {
+                "name": "Id",
+                "type": "text",
+                "label": "ID"
+              },
+              {
+                "name": "Name",
+                "type": "text",
+                "label": "Name"
+              },
+              {
+                "name": "Calories",
+                "type": "text",
+                "label": "Calories"
+              }
+      
+            ]
+          }
+        },
+        "getSingle": {
+          "url": "https://:urlHost/api/v1/Foods/:Id",
+          "dataPath": null,
+          "queryParams": [],
+          "requestHeaders": {}
+        },
+        "put": {
+          "url": "https://:urlHost/api/v1/Foods/:Id",
+          "actualMethod": null,
+          "fields": [
+            {
+              "name": "Name",
+              "label": "Name",
+              "type": "text"
+            },
+            {
+              "name": "Calories",
+              "label": "Calories",
+              "type": "text"
+            }
+          ]
+        },
+        "post": {
+          "url": "https://:urlHost/api/v1/Foods",
+          "fields": [
+            {
+              "name": "Name",
+              "label": "Name",
+              "type": "text"
+            },
+            {
+              "name": "Calories",
+              "label": "Calories",
+              "type": "text"
+            }
+          ]
+        },
+        "delete": {
+          "url": "https://:urlHost/api/v1/Foods/:Id"
+        }
+      }
+    }
+  ]
+}

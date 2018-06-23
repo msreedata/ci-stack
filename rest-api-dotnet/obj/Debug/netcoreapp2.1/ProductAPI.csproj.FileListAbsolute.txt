@@ -1,0 +1,14 @@
+/home/linuxadmin/me/ProductAPI/bin/Debug/netcoreapp2.1/ProductAPI.deps.json
+/home/linuxadmin/me/ProductAPI/bin/Debug/netcoreapp2.1/ProductAPI.runtimeconfig.json
+/home/linuxadmin/me/ProductAPI/bin/Debug/netcoreapp2.1/ProductAPI.runtimeconfig.dev.json
+/home/linuxadmin/me/ProductAPI/bin/Debug/netcoreapp2.1/ProductAPI.dll
+/home/linuxadmin/me/ProductAPI/bin/Debug/netcoreapp2.1/ProductAPI.pdb
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.csprojAssemblyReference.cache
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.csproj.CoreCompileInputs.cache
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.RazorAssemblyInfo.cache
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.RazorAssemblyInfo.cs
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.AssemblyInfoInputs.cache
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.AssemblyInfo.cs
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.RazorTargetAssemblyInfo.cache
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.dll
+/home/linuxadmin/me/ProductAPI/obj/Debug/netcoreapp2.1/ProductAPI.pdb
