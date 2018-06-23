@@ -1,0 +1,46 @@
+version: "3.4"
+services:
+  
+  dotnet:
+    image: linBox:5000/restdotnet:v2
+    build:
+      context: ./../rest-api-dotnet
+    ports:
+      - "5001:5001"
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: any
+
+  node:
+    image: linBox:5000/restnode:v2
+    build:
+      context: ./../rest-client-node
+    ports:
+      - "80:4000"
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: any
+
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8081:8080"
+    stop_grace_period: 1m30s
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  frontend:
+volumes:
+  rest-data:
