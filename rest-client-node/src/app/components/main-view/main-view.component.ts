@@ -47,7 +47,7 @@ export class MainViewComponent implements OnInit {
       });
     });
 
-    //this.versionInfo = "on init set"
+    this.versionInfo = "connecting..."
 
     
     
