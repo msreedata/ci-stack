@@ -1,12 +1,12 @@
 {
-  "name": "REST Client v2.2.1",
+  "name": "REST Client v2.2.6",
   "pages": [
     {
       "default": true,
       "name": "Foods",
       "id": "Foods",
       "urlHost": "smtest.westeurope.cloudapp.azure.com:5000",
-      "description": "RESTful API Service client for .Net Core service (service v2.2.0)",
+      "description": "RESTful API Service client for .Net Core service (service v2.2.5)",
       "methods": {
         "getAll": {
           "label": "Get Food list",
