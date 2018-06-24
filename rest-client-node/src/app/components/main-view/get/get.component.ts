@@ -2,6 +2,7 @@ import {Component, Input, Inject, Output, EventEmitter, ViewChild } from '@angul
 import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
 //import { ToastrService } from 'toastr-ng2';
 import { ToastrService } from 'ngx-toastr';
+import { Http,Response } from '@angular/http';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class GetComponent {
 
   loading: boolean = false;
 
+  versionInfo: any = null;
+
   data: Array<Object> = [];
 
   myForm: FormGroup = this._fb.group(this.getQueryParamsObj());
@@ -31,6 +34,7 @@ export class GetComponent {
               @Inject('DataPathUtils') private dataPathUtils,
               @Inject('UrlUtils') private urlUtils,
               private _fb: FormBuilder,
+              private http: Http,
               private toastrService: ToastrService) {
   }
 
@@ -51,6 +55,38 @@ export class GetComponent {
     });
   }
 
+  
+  public getServiceVersion() {
+    
+    if (!this.pageData.methods.getAll) {
+      return "";
+    }
+
+    if(!this.versionInfo){
+      const getMethod = this.pageData.methods.getAll;
+      let getUrl = getMethod.url;
+      if (getUrl) {
+        getUrl=getUrl.replace('/api/v1/' , '/api/v2/')
+      }
+
+      const dataPath = getMethod.dataPath;
+      //replace base url with pageData url
+      
+      getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
+
+      console.log('Get single url', getUrl);
+
+      this.http.get(getUrl)
+                  .subscribe(result => this.versionInfo =result.text());
+
+     //      this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text()).unsubscribe();
+
+    }
+
+    return this.versionInfo;
+
+  }
+
   public firstRequest() {
     if (!this.pageData) {
       return;
@@ -68,6 +104,8 @@ export class GetComponent {
     if (this.queryParams.length) {
       this.myForm = this._fb.group(this.getQueryParamsObj());
     }
+
+    this.getServiceVersion();
 
     this.getRequest();
   }
