@@ -27,6 +27,7 @@
       </ng-template>
       <div *ngSwitchDefault>
         <label for="name">{{queryParam.label || queryParam.name}}</label>
+        <label for="name">{{queryParam.label || queryParam.name}}</label>
         <input id="name" type="text" placeholder="{{queryParam.label}}" [formControlName]="queryParam.name"/>
       </div>
     </div>
