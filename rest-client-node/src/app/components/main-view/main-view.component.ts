@@ -111,7 +111,9 @@ export class MainViewComponent implements OnInit {
     //               .subscribe(result => this.versionInfo =result.text());
 
     //  //      
-    this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text());
+    this.http.request(getUrl)
+    .subscribe(response => this.versionInfo = response.text())
+    //this.http.request(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text());
 
     }
 
