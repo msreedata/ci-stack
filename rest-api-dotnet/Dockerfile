@@ -6,7 +6,6 @@ MAINTAINER inSreeMan@gmail.com
 RUN apk update && apk add --no-cache git
 
 # 2. Install project dependencies
-#COPY ./*.csproj /src
 COPY *.csproj /src/
 WORKDIR /src/
 
@@ -14,7 +13,7 @@ WORKDIR /src/
 RUN dotnet restore
 
 # 3. Update source code
-COPY . /src
+COPY . .
 
 # 4. Prelaunch actions
 EXPOSE 5001
