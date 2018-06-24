@@ -109,7 +109,7 @@ export class MainViewComponent implements OnInit {
       getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
 
       this.http.get(getUrl).subscribe((response) => {
-      this.pageData.version = response.text();
+      this.pageData.version = "Service version : " + response.text();
     });
 
 
