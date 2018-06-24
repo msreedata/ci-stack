@@ -31,7 +31,7 @@ export class MainViewComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private toastrService: ToastrService,
-              private http: HttpClient) {
+              private http: Http) {
 
                 console.log('pg.1*********');
   }
