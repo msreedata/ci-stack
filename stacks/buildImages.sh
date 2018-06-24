@@ -2,8 +2,8 @@
 if [[ $projectDir && -d $projectDir ]];then
     pushd $projectDir #$HOME/dockerstore/ci-stack
 
-    rest_api_version=v2.2.1
-    rest_client_version=v2.2.2
+    rest_api_version=v2.2.4
+    rest_client_version=v2.2.4
     #build php
     # sudo docker build --no-cache ./rest-client-node -t linBox:5000/restnode:v2.1.1
     # sudo docker build --no-cache ./rest-api-dotnet -t linBox:5000/restdotnet:v2.1.1
