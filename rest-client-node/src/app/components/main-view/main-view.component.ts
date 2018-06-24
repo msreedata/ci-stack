@@ -69,7 +69,8 @@ export class MainViewComponent implements OnInit {
     }
   }
 
-  public getServiceVersion() {
+
+  public getServiceVersion(): Observable<string> {
     
     if (!this.pageData.methods.getAll) {
       return "";
@@ -96,9 +97,8 @@ export class MainViewComponent implements OnInit {
     //   actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
     // }
 
-    let result = this.http.get(getUrl).map(res => res.text());
-
     
+    let result = this.http.get(getUrl, {responseType: 'text'});
 
     console.log('Get service info url', result);
     return result;
