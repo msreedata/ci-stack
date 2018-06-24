@@ -45,6 +45,8 @@ export class MainViewComponent implements OnInit {
         this.getPageData(pageId);
       });
     });
+
+    this.versionInfo = "on init set"
   }
 
   private getPageData(pageId) {
@@ -73,7 +75,8 @@ export class MainViewComponent implements OnInit {
 
 
   public getServiceVersion() {
-    return "static data";
+    this.versionInfo = "initial set"
+    return this.versionInfo;
   }
   // public getServiceVersion() {
     
