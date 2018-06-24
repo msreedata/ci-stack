@@ -2,13 +2,18 @@ FROM microsoft/dotnet:2.1-sdk-alpine
 
 MAINTAINER inSreeMan@gmail.com
 
-# Copy app to /src.
-COPY . /src
-
+# 1. Setup runtime environment
 RUN apk update && apk add --no-cache git
-# Install app and dependencies into /src
+
+# 2. Install project dependencies
+COPY ./*.csproj /src
 RUN cd /src && dotnet restore
 
+# 3. Update source code
+COPY . /src
+
+# 4. Prelaunch actions
 EXPOSE 5001
 
+# 5. Defult launch action : May be overriden in stackfile
 CMD dotnet run
