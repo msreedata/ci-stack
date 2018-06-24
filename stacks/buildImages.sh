@@ -3,8 +3,8 @@ if [[ $projectDir && -d $projectDir ]];then
     pushd $projectDir #$HOME/dockerstore/ci-stack
 
     #build php
-    sudo docker build --no-cache ./rest-client-node -t linBox:5000/restnode:v2.0.4
-    sudo docker build --no-cache ./rest-api-dotnet -t linBox:5000/restdotnet:v2.0.4
+    sudo docker build --no-cache ./rest-client-node -t linBox:5000/restnode:v2.1.0
+    sudo docker build --no-cache ./rest-api-dotnet -t linBox:5000/restdotnet:v2.1.0
 
     #enable this during testing only
 
