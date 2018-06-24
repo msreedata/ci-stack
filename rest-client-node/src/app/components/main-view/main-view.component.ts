@@ -77,22 +77,24 @@ export class MainViewComponent implements OnInit {
       return "";
     }
 
-    const getMethod = this.pageData.methods.getAll;
-    let getUrl = getMethod.url;
-    if (getUrl) {
-      getUrl=getUrl.replace('/api/v1/' , '/api/v2/')
+    if(!this.versionInfo){
+      const getMethod = this.pageData.methods.getAll;
+      let getUrl = getMethod.url;
+      if (getUrl) {
+        getUrl=getUrl.replace('/api/v1/' , '/api/v2/')
+      }
+
+      const dataPath = getMethod.dataPath;
+      //replace base url with pageData url
+      
+      getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
+
+      console.log('Get single url', getUrl);
+
+      this.http.get(getUrl)
+        .subscribe(testReadme => this.versionInfo = testReadme.text());
     }
-
-    const dataPath = getMethod.dataPath;
-    //replace base url with pageData url
     
-    getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
-
-    console.log('Get single url', getUrl);
-
-    this.http.get(getUrl)
-      .subscribe(testReadme => this.versionInfo = testReadme.text());
-
     return this.versionInfo;
 
   }
