@@ -47,6 +47,7 @@ export class MainViewComponent implements OnInit {
     });
 
     this.versionInfo = "on init set"
+    
   }
 
   private getPageData(pageId) {
