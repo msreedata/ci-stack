@@ -67,7 +67,32 @@ export class MainViewComponent implements OnInit {
   }
 
   public getServiceVersion() {
-    return this.pageData.urlHost;
+    
+    if (!this.pageData.methods.getAll) {
+      return "";
+    }
+
+    const getMethod = this.pageData.methods.getAll;
+    let getUrl = getMethod.url;
+    if (getUrl) {
+      getUrl=getUrl.replace('/api/v1/' , '/api/v2/')
+    }
+
+    const dataPath = getMethod.dataPath;
+    //replace base url with pageData url
+    
+    getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
+
+    console.log('Get service info url', getUrl);
+
+    let actualMethod = this.requestsService.get.bind(this.requestsService);
+    const actualMethodType = this.pageData.methods.getSingle.actualMethod;
+    if (actualMethodType && this.requestsService[actualMethodType]) {
+      actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
+    }
+
+    return actualMethod(getUrl);
+
   }
 
   private getRowData(defaultData = {}) {
