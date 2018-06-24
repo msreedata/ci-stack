@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import {Observable} from "rxjs/Rx";
 import {GetComponent} from "./get/get.component";
-import { Http } from '@angular/http';
+import { Http,Response } from '@angular/http';
 
 
 @Component({
