@@ -93,7 +93,7 @@ export class MainViewComponent implements OnInit {
       console.log('Get single url', getUrl);
 
       this.http.get(getUrl)
-                  .subscribe(result => this.versionInfo =result.json());
+                  .subscribe(result => this.versionInfo =result.text());
 
      //      this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text()).unsubscribe();
 
