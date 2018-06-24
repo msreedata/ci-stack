@@ -6,7 +6,7 @@ MAINTAINER inSreeMan@gmail.com
 RUN apk update && apk add --no-cache git
 
 # 2. Install project dependencies
-COPY ./*.csproj /src
+ADD ./*.csproj /src
 WORKDIR /src
 RUN cd /src && dotnet restore
 
