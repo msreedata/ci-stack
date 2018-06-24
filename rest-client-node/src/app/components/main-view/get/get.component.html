@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<form *ngIf="queryParams.length" class="pure-form pure-form-stacked" [formGroup]="myForm" (ngSubmit)="getResults()">
+<!-- <form *ngIf="queryParams.length" class="pure-form pure-form-stacked" [formGroup]="myForm" (ngSubmit)="getResults()">
   <fieldset>
     <div class="pure-control-group" *ngFor="let queryParam of queryParams" [ngSwitch]="queryParam.type">
       <ng-template [ngSwitchCase]="'hidden'" ngSwitchDefault>
@@ -27,7 +27,6 @@
       </ng-template>
       <div *ngSwitchDefault>
         <label for="name">{{queryParam.label || queryParam.name}}</label>
-        <label for="name">{{queryParam.label || queryParam.name}}</label>
         <input id="name" type="text" placeholder="{{queryParam.label}}" [formControlName]="queryParam.name"/>
       </div>
     </div>
@@ -36,7 +35,7 @@
       <button type="submit" class="pure-button pure-button-primary">Submit</button>
     </div>
   </fieldset>
-</form>
+</form> -->
 
 <app-loader [loading]="loading" [size]="'small'"></app-loader>
 
