@@ -89,19 +89,12 @@ export class MainViewComponent implements OnInit {
 
     console.log('Get service info url', getUrl);
 
+  
     
+    // let result = this.http.get(getUrl, {responseType: 'text'});
 
-    // let actualMethod = this.requestsService.get.bind(this.requestsService);
-    // const actualMethodType = this.pageData.methods.getSingle.actualMethod;
-    // if (actualMethodType && this.requestsService[actualMethodType]) {
-    //   actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
-    // }
-
-    
-    let result = this.http.get(getUrl, {responseType: 'text'});
-
-    console.log('Get service info url', result);
-    return result;
+    // console.log('Get service info url', result);
+    return getUrl;
 
   }
 
