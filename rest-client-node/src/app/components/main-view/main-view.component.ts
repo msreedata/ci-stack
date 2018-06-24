@@ -4,7 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import {Observable} from "rxjs/Rx";
 import {GetComponent} from "./get/get.component";
 import { Http,Response } from '@angular/http';
-
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-main-view',
@@ -30,7 +31,7 @@ export class MainViewComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private toastrService: ToastrService,
-              private http: Http) {
+              private http: HttpClient) {
 
                 console.log('pg.1*********');
   }
@@ -83,7 +84,9 @@ export class MainViewComponent implements OnInit {
   }
 
 
+
   public getServiceVersion() {
+
 
     let some = this.http.get(`http://lindoce02:5000/api/v2/Foods`)
     .map((res:Response) => res.json());
