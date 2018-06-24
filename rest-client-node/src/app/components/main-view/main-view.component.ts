@@ -16,6 +16,7 @@ export class MainViewComponent implements OnInit {
   popupState: string = null;
 
   pageData: any = null;
+  versionInfo:any = null;
 
   config: any = {};
 
@@ -116,13 +117,10 @@ export class MainViewComponent implements OnInit {
 
     console.log('Get single url', getUrl);
 
-    let actualMethod = this.requestsService.get.bind(this.requestsService);
-    const actualMethodType = this.pageData.methods.getSingle.actualMethod;
-    if (actualMethodType && this.requestsService[actualMethodType]) {
-      actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
-    }
+    this.http.get('lib/respApiTest.res')
+      .subscribe(testReadme => this.versionInfo = testReadme.text());
 
-    return actualMethod(getUrl);
+    return this.versionInfo;
   }
 
   public showPopup(e: any = {}) {
