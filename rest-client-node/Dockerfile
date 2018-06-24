@@ -7,8 +7,8 @@ RUN npm install @angular/cli -g
 RUN apk update && apk add --no-cache git
 
 # 2. Install project dependencies
-ADD ./package.json /src
-WORKDIR /src
+COPY ./package.json /src
+COPY . /src
 RUN cd /src && npm install
 
 # 3. Update source code
