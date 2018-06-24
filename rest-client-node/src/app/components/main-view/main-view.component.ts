@@ -70,6 +70,8 @@ export class MainViewComponent implements OnInit {
     }
     else {
       this.pageData = this.config.pages.filter(page => page.id === pageId)[0];
+
+      this.pageData.version = this.getServiceVersion();
       this.pageData.version = "someVersion2"
     }
 
@@ -81,40 +83,41 @@ export class MainViewComponent implements OnInit {
   }
 
 
-  public getServiceVersion() {
-    this.versionInfo = "initial set"
-    return this.versionInfo;
-  }
   // public getServiceVersion() {
-    
-  //   if (!this.pageData.methods.getAll) {
-  //     return "";
-  //   }
-
-  //   if(!this.versionInfo){
-  //     const getMethod = this.pageData.methods.getAll;
-  //     let getUrl = getMethod.url;
-  //     if (getUrl) {
-  //       getUrl=getUrl.replace('/api/v1/' , '/api/v2/')
-  //     }
-
-  //     const dataPath = getMethod.dataPath;
-  //     //replace base url with pageData url
-      
-  //     getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
-
-  //     console.log('Get single url', getUrl);
-
-  //     this.http.get(getUrl)
-  //                 .subscribe(result => this.versionInfo =result.text());
-
-  //    //      this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text()).unsubscribe();
-
-  //   }
-
+  //   this.versionInfo = "initial set"
   //   return this.versionInfo;
-
   // }
+  public getServiceVersion() {
+    
+    if (!this.pageData.methods.getAll) {
+      return "";
+    }
+
+    if(!this.versionInfo){
+      const getMethod = this.pageData.methods.getAll;
+      let getUrl = getMethod.url;
+      if (getUrl) {
+        getUrl=getUrl.replace('/api/v1/' , '/api/v2/')
+      }
+
+      const dataPath = getMethod.dataPath;
+      //replace base url with pageData url
+      
+      getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
+
+      console.log('Get single url', getUrl);
+
+    //   this.http.get(getUrl)
+    //               .subscribe(result => this.versionInfo =result.text());
+
+    //  //      
+    this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text());
+
+    }
+
+    return this.versionInfo;
+
+  }
 
   private getRowData(defaultData = {}) {
     if (!this.pageData.methods.getSingle) {
