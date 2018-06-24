@@ -8,8 +8,8 @@ if [[ $projectDir && -d $projectDir ]];then
 
     #build images with tag
     sudo docker build ./rest-api-dotnet -t linBox:5000/restdotnet:${rest_api_version}
-    sudo docker build --no-cache ./rest-client-node -t "linBox:5000/restnode:${rest_client_version}"
-    # sudo docker build ./rest-client-node -t "linBox:5000/restnode:${rest_client_version}"
+    # sudo docker build --no-cache ./rest-client-node -t "linBox:5000/restnode:${rest_client_version}"
+    sudo docker build ./rest-client-node -t "linBox:5000/restnode:${rest_client_version}"
 
     #enable this during testing only
     # sudo docker build --no-cache ./rest-client-node -t restnode:${rest_client_version}
