@@ -4,7 +4,7 @@ if [[ $projectDir && -d $projectDir ]];then
 
     # define versions
     rest_api_version=v2.2.5
-    rest_client_version=v2.2.6
+    rest_client_version=v2.2.7
 
     #build images with tag
     sudo docker build ./rest-api-dotnet -t linBox:5000/restdotnet:${rest_api_version}
