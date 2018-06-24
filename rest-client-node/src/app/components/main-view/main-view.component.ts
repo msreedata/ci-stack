@@ -90,7 +90,7 @@ export class MainViewComponent implements OnInit {
     let profileResponse;
 
     this.http.get(`http://lindoce02:5000/api/v2/Foods`).subscribe((response) => {
-      this.pageData.version = response;
+      this.pageData.version = response.body;
     });
     
     
