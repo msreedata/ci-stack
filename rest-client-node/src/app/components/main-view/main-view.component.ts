@@ -16,7 +16,7 @@ export class MainViewComponent implements OnInit {
   popupState: string = null;
 
   pageData: any = null;
-  versionInfo: any = null;
+  private versionInfo: any = null;
 
   config: any = {};
 
@@ -91,10 +91,10 @@ export class MainViewComponent implements OnInit {
 
       console.log('Get single url', getUrl);
 
-      this.http.get(getUrl)
-        .subscribe(testReadme => this.versionInfo = testReadme.text());
+      this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text()).unsubscribe();
+
     }
-    
+
     return this.versionInfo;
 
   }
