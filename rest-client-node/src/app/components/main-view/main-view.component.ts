@@ -3,8 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import {Observable} from "rxjs/Rx";
 import {GetComponent} from "./get/get.component";
-import { Http,Response } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -87,12 +85,14 @@ export class MainViewComponent implements OnInit {
 
   public getServiceVersion() {
 
+    let profileResponse;
 
-    let some = this.http.get(`http://lindoce02:5000/api/v2/Foods`)
-    .map((res:Response) => res.json());
+    this.http.get(`http://lindoce02:5000/api/v2/Foods`).subscribe((response) => {
+      profileResponse = response;
+    });
     
     
-    this.versionInfo = some
+    this.versionInfo = profileResponse
     return this.versionInfo;
   }
   // public getServiceVersion() {
