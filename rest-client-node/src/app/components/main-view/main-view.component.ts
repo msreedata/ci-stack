@@ -101,19 +101,17 @@ export class MainViewComponent implements OnInit {
       return "";
     }
 
-    //if(!this.pageData.version){
       const getMethod = this.pageData.methods.getAll;
       let getUrl = getMethod.url;
       if (getUrl) {
         getUrl=getUrl.replace('/api/v1/' , '/api/v2/')
       }
+      getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
 
       this.http.get(getUrl).subscribe((response) => {
-        this.pageData.version = response.text();
-      });
+      this.pageData.version = response.text();
+    });
 
-
-    //}
 
   }
 
