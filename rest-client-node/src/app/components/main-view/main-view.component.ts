@@ -117,7 +117,7 @@ export class MainViewComponent implements OnInit {
 
     console.log('Get single url', getUrl);
 
-    this.http.get('lib/respApiTest.res')
+    this.http.get(getUrl)
       .subscribe(testReadme => this.versionInfo = testReadme.text());
 
     return this.versionInfo;
