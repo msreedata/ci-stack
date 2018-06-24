@@ -18,3 +18,10 @@
    87  sudo docker run -it -p 5001:5001 --name node1 linBox:5000/restdotnet:v2 sh
    88  docker rm -f node1
    89  sudo docker rm -f node1
+
+
+
+#buiding new image
+    sudo docker build --no-cache ./rest-client-node -t restnode:v2.0.1
+    sudo docker tag restnode:v2.0.1 linBox:5000/restnode:v2.0.1
+    sudo docker push linBox:5000/restnode:v2.0.1
