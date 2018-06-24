@@ -5,6 +5,7 @@ import {Observable} from "rxjs/Rx";
 import {GetComponent} from "./get/get.component";
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http'; 
+import { Http,Response } from '@angular/http'
 
 @Component({
   selector: 'app-main-view',
