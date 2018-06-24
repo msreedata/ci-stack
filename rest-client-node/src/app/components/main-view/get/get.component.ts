@@ -18,7 +18,7 @@ export class GetComponent {
 
   loading: boolean = false;
 
-  versionInfo: any = null;
+  private versionInfo: any = null;
 
   data: Array<Object> = [];
 
