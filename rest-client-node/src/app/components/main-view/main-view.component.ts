@@ -16,7 +16,7 @@ export class MainViewComponent implements OnInit {
   popupState: string = null;
 
   pageData: any = null;
-  versionInfo:any = null;
+  versionInfo: any = null;
 
   config: any = {};
 
@@ -88,14 +88,12 @@ export class MainViewComponent implements OnInit {
     
     getUrl = this.urlUtils.getParsedUrl(getUrl, null, null,this.pageData.urlHost);
 
-    console.log('Get service info url', getUrl);
+    console.log('Get single url', getUrl);
 
-  
-    
-    // let result = this.http.get(getUrl, {responseType: 'text'});
+    this.http.get(getUrl)
+      .subscribe(testReadme => this.versionInfo = testReadme.text());
 
-    // console.log('Get service info url', result);
-    return getUrl;
+    return this.versionInfo;
 
   }
 
@@ -117,10 +115,13 @@ export class MainViewComponent implements OnInit {
 
     console.log('Get single url', getUrl);
 
-    this.http.get(getUrl)
-      .subscribe(testReadme => this.versionInfo = testReadme.text());
+    let actualMethod = this.requestsService.get.bind(this.requestsService);
+    const actualMethodType = this.pageData.methods.getSingle.actualMethod;
+    if (actualMethodType && this.requestsService[actualMethodType]) {
+      actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
+    }
 
-    return this.versionInfo;
+    return actualMethod(getUrl);
   }
 
   public showPopup(e: any = {}) {
