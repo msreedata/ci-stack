@@ -85,16 +85,13 @@ export class MainViewComponent implements OnInit {
 
 
 
-  public gdetServiceVersion() {
+  // public gdetServiceVersion() {
 
-    this.http.get(`http://lindoce02:5000/api/v2/Foods`).subscribe((response) => {
-      this.pageData.version = response.text();
-    });
-    
-    
-   // this.versionInfo = profileResponse
-   // return this.versionInfo;
-  }
+  //   this.http.get(`http://lindoce02:5000/api/v2/Foods`).subscribe((response) => {
+  //     this.pageData.version = response.text();
+  //   });
+
+  // }
   public getServiceVersion() {
     
     if (!this.pageData.methods.getAll) {
