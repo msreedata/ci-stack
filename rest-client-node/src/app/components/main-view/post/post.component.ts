@@ -87,10 +87,6 @@ export class PostComponent implements OnInit {
     return `${field.dataPath}.${field.name}`;
   }
 
-  public getServiceVersion() {
-    return this.pageData.urlHost;
-  }
-
   public submit(e: Event) {
     e.preventDefault();
     const fields = this.buildFields();
