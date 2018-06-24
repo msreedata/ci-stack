@@ -9,7 +9,6 @@ RUN apk update && apk add --no-cache git
 COPY *.csproj /src/
 WORKDIR /src/
 
-#COPY . /src
 RUN dotnet restore
 
 # 3. Update source code
