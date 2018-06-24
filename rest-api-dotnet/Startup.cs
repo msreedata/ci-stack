@@ -121,7 +121,8 @@ namespace ProductAPI
 
             app.AddSeedData();
 
-            app.UseHttpsRedirection();
+            //******* disabling https redirection for Azure testing */
+            //app.UseHttpsRedirection();
 
             app.UseSwagger();
             app.UseSwaggerUI(

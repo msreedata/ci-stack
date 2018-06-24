@@ -5,12 +5,12 @@
       "default": true,
       "name": "Foods",
       "id": "Foods",
-      "urlHost": "smtest.westeurope.cloudapp.azure.com:5001",
+      "urlHost": "restv2_dotnet:5000",
       "description": "RESTful API Service client for .Net Core service",
       "methods": {
         "getAll": {
           "label": "Get Food list",
-          "url": "https://:urlHost/api/v1/Foods",
+          "url": "http://:urlHost/api/v1/Foods",
           "dataPath": "value",
           "queryParams": [
             {
@@ -42,13 +42,13 @@
           }
         },
         "getSingle": {
-          "url": "https://:urlHost/api/v1/Foods/:Id",
+          "url": "http://:urlHost/api/v1/Foods/:Id",
           "dataPath": null,
           "queryParams": [],
           "requestHeaders": {}
         },
         "put": {
-          "url": "https://:urlHost/api/v1/Foods/:Id",
+          "url": "http://:urlHost/api/v1/Foods/:Id",
           "actualMethod": null,
           "fields": [
             {
@@ -64,7 +64,7 @@
           ]
         },
         "post": {
-          "url": "https://:urlHost/api/v1/Foods",
+          "url": "http://:urlHost/api/v1/Foods",
           "fields": [
             {
               "name": "Name",
@@ -79,7 +79,7 @@
           ]
         },
         "delete": {
-          "url": "https://:urlHost/api/v1/Foods/:Id"
+          "url": "http://:urlHost/api/v1/Foods/:Id"
         }
       }
     }
