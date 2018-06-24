@@ -70,7 +70,7 @@ export class MainViewComponent implements OnInit {
   }
 
 
-  public getServiceVersion(): Observable<string> {
+  public getServiceVersion() {
     
     if (!this.pageData.methods.getAll) {
       return "";
