@@ -3,7 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import {Observable} from "rxjs/Rx";
 import {GetComponent} from "./get/get.component";
-import {Http} from '@angular/http';
+import { Http } from '@angular/http';
+
 
 @Component({
   selector: 'app-main-view',
@@ -91,7 +92,10 @@ export class MainViewComponent implements OnInit {
 
       console.log('Get single url', getUrl);
 
-      this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text()).unsubscribe();
+      this.http.get(getUrl)
+      .map((data) => {  this.versionInfo; })
+
+//      this.http.get(getUrl).subscribe(testReadme => this.versionInfo = testReadme.text()).unsubscribe();
 
     }
 
