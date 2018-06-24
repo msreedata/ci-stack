@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import {Observable} from "rxjs/Rx";
 import {GetComponent} from "./get/get.component";
+import {Http} from '@angular/http';
+
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
@@ -25,7 +27,8 @@ export class MainViewComponent implements OnInit {
               @Inject('UrlUtils') private urlUtils,
               private route: ActivatedRoute,
               private router: Router,
-              private toastrService: ToastrService) {
+              private toastrService: ToastrService,
+              private http: Http) {
 
                 console.log('pg.1*********');
   }
@@ -87,20 +90,15 @@ export class MainViewComponent implements OnInit {
 
     
 
-    let actualMethod = this.requestsService.get.bind(this.requestsService);
-    const actualMethodType = this.pageData.methods.getSingle.actualMethod;
-    if (actualMethodType && this.requestsService[actualMethodType]) {
-      actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
-    }
+    // let actualMethod = this.requestsService.get.bind(this.requestsService);
+    // const actualMethodType = this.pageData.methods.getSingle.actualMethod;
+    // if (actualMethodType && this.requestsService[actualMethodType]) {
+    //   actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
+    // }
 
-    let result = actualMethod(getUrl).map(response => {
-      const contentType = response.headers.get('Content-type');
-     if (contentType == 'application/json') {
-      return response.json();   
-     } else if (contentType == 'application/text') {
-      return response.text();
-     }
-  })
+    let result = this.http.get(getUrl).map(res => res.text());
+
+    
 
     console.log('Get service info url', result);
     return result;
