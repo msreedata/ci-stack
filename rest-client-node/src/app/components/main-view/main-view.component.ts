@@ -66,6 +66,10 @@ export class MainViewComponent implements OnInit {
     }
   }
 
+  public getServiceVersion() {
+    return this.pageData.urlHost;
+  }
+
   private getRowData(defaultData = {}) {
     if (!this.pageData.methods.getSingle) {
       return Observable.of(defaultData);
