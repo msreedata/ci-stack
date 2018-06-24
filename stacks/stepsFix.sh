@@ -22,6 +22,6 @@
 
 
 #buiding new image
-    sudo docker build --no-cache ./rest-client-node -t restnode:v2.0.1
-    sudo docker tag restnode:v2.0.1 linBox:5000/restnode:v2.0.1
+    sudo docker build --no-cache ./rest-client-node -t restnode:v2.0.3
+    sudo docker tag restnode:v2.0.1 linBox:5000/restnode:v2.0.3
     sudo docker push linBox:5000/restnode:v2.0.1

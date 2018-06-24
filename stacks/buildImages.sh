@@ -6,8 +6,13 @@ if [[ $projectDir && -d $projectDir ]];then
     sudo docker build --no-cache ./rest-client-node -t linBox:5000/restnode:v2.0.2
     #sudo docker build --no-cache ./rest-api-dotnet -t linBox:5000/restdotnet:v2
 
+    #enable this during testing only
+    sudo docker build --no-cache ./rest-client-node -t restnode:v2.0.3
+    sudo docker tag restnode:v2.0.3 linBox:5000/restnode:v2.0.3
+    sudo docker push linBox:5000/restnode:v2.0.3
+
     #push image to registry
-    sudo docker push linBox:5000/restnode:v2.0.2
+    #sudo docker push linBox:5000/restnode:v2.0.2
 
     popd 
 
