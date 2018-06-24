@@ -9,7 +9,7 @@ namespace SampleWebApiAspNetCore.v2.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok("2.3.2");
+            return Ok("2.3.3");
         }
     }
 }
