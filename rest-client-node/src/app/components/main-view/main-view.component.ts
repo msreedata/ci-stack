@@ -72,6 +72,9 @@ export class MainViewComponent implements OnInit {
   }
 
 
+  public getServiceVersion() {
+    return "static data";
+  }
   // public getServiceVersion() {
     
   //   if (!this.pageData.methods.getAll) {
