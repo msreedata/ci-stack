@@ -72,8 +72,8 @@ export class MainViewComponent implements OnInit {
     else {
       this.pageData = this.config.pages.filter(page => page.id === pageId)[0];
 
-      this.pageData.version = this.getServiceVersion();
-      this.pageData.version = "someVersion2"
+      this.getServiceVersion();
+      //this.pageData.version = "someVersion2"
     }
 
     if (!this.pageData) {
@@ -90,12 +90,12 @@ export class MainViewComponent implements OnInit {
     let profileResponse;
 
     this.http.get(`http://lindoce02:5000/api/v2/Foods`).subscribe((response) => {
-      profileResponse = response;
+      this.versionInfo = response;
     });
     
     
-    this.versionInfo = profileResponse
-    return this.versionInfo;
+   // this.versionInfo = profileResponse
+   // return this.versionInfo;
   }
   // public getServiceVersion() {
     
