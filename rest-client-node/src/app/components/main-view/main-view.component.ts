@@ -91,7 +91,8 @@ export class MainViewComponent implements OnInit {
       actualMethod = this.requestsService[actualMethodType].bind(this.requestsService);
     }
 
-    return actualMethod(getUrl);
+    let result = actualMethod(getUrl)
+    return result;
 
   }
 
