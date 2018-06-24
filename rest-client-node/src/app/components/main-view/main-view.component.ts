@@ -92,6 +92,8 @@ export class MainViewComponent implements OnInit {
     }
 
     let result = actualMethod(getUrl)
+
+    console.log('Get service info url', result);
     return result;
 
   }
