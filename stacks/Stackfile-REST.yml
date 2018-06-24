@@ -7,6 +7,8 @@ services:
       context: ./../rest-api-dotnet
     ports:
       - "5001:5001"
+    working_dir: /src
+    entrypoint: dotnet run
     deploy:
       replicas: 2
       update_config:
@@ -20,7 +22,9 @@ services:
     build:
       context: ./../rest-client-node
     ports:
-      - "90:4000"
+      - "91:4000"
+    working_dir: /src
+    entrypoint: "sh -c 'ng serve --host $${hostname} --disable-host-check'"
     deploy:
       replicas: 3
       update_config:
