@@ -48,12 +48,14 @@ export class MainViewComponent implements OnInit {
 
     this.versionInfo = "on init set"
 
-    this.pageData.version = "someVersion"
+    
     
   }
 
   private getPageData(pageId) {
     this.pageData = null;
+
+
 
     if (!pageId) {
       this.pageData = this.config.pages.filter(page => page.default)[0];
@@ -63,15 +65,17 @@ export class MainViewComponent implements OnInit {
       }
 
       this.router.navigate([this.pageData.id]);
-
+      this.pageData.version = "someVersion1"
       return;
     }
     else {
       this.pageData = this.config.pages.filter(page => page.id === pageId)[0];
+      this.pageData.version = "someVersion2"
     }
 
     if (!this.pageData) {
       this.toastrService.error(`No page found with id ${pageId}`, 'Error');
+      this.pageData.version = "someVersion3"
       return;
     }
   }
