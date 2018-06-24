@@ -11,7 +11,7 @@
   <fieldset>
     <div class="pure-control-group" *ngFor="let queryParam of queryParams" [ngSwitch]="queryParam.type">
       <ng-template [ngSwitchCase]="'hidden'" ngSwitchDefault>
-        <input type="hidden" [formControlName]="queryParam.name" value="{{queryParam.value || ''}}" />
+        <input type="hidden" [formControlName]="queryParam.name" value="{{pageData.description}}" />
       </ng-template>
       <ng-template [ngSwitchCase]="'boolean'">
         <label class="pure-checkbox">
