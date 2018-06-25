@@ -5,7 +5,7 @@ services:
     image: linBox:5000/restdotnet:v2.3.4
     build:
       context: ./../rest-api-dotnet
-    ports:S
+    ports:
       - "5000:5000"
       - "5001:5001"
     working_dir: /src
