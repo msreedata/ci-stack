@@ -70,6 +70,9 @@ function Update-ServerBuildImage ($version) {
         newVersion = $version
     }
     Replace-VersionForCISource @param
+    #also update ci refresh
+    $param.file = "$PSScriptroot\..\stacks\cirefresh.sh"
+    Replace-VersionForCISource @param
 }
 
 
@@ -98,6 +101,9 @@ function Update-ClientBuildImage ($version) {
         newLine    = '    rest_client_version=vVERSION'.Replace('VERSION', $version)
         newVersion = $version
     }
+    Replace-VersionForCISource @param
+    #also update ci refresh
+    $param.file = "$PSScriptroot\..\stacks\cirefresh.sh"
     Replace-VersionForCISource @param
 }
 
