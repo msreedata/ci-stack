@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SampleWebApiAspNetCore.v2.Controllers
 {
@@ -9,7 +9,7 @@ namespace SampleWebApiAspNetCore.v2.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok("2.3.4");
+            return Ok("2.3.8");
         }
     }
 }

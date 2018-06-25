@@ -22,8 +22,8 @@ function Replace-VersionForCISource {
     $contents = gc $file
     $data = [System.Collections.Generic.List[String]]::new()
     foreach($line in $contents){
-        if($line.StartsWith($check)){
-            Write-Verbose "Replacing version as $newVesion"
+        if($line.StartsWith($startsWith)){
+            Write-Verbose "Replacing version on $line"
             $data.add($newline)
             $isReplaced = $true
         }else{
@@ -34,7 +34,7 @@ function Replace-VersionForCISource {
     $data  | out-file -encoding ASCII $file
 
     if($isReplaced){
-        Write-Verbose "Version replaced...."
+        Write-Verbose "Version replaced....$newVersion"
     }else{
         Write-Warning "Failed to replace version in $file"
     }
@@ -108,11 +108,11 @@ function Update-ClientBuildImage ($version)
 
 
 $r = Read-Host -Prompt "Set Service version now? (y/n)"
-$setService = $r -ne 'y'
+$setService = -not ($r -ne 'y')
 if($setService){
     #prompt for manual entry
     $serviceVersion = Read-Host -Prompt "Enter the new version number for REST API Service (x.x.x)"
-    if($serviceVersion -and ($serviceVersion.Length -gt 5)){
+    if($serviceVersion -and ($serviceVersion.Length -ge 5)){
         #$file = "$PSScriptroot\..\rest-api-dotnet\Controllers\v2\FoodsController.cs".
         Update-ServerCs $serviceVersion
         Update-ServerStackYml $serviceVersion
@@ -121,3 +121,5 @@ if($setService){
         Write-Warning -Message "invalid version number specified.skipping update"
     }
 }
+
+$VerbosePreference = 'continue'

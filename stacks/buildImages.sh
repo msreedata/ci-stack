@@ -3,7 +3,7 @@ if [[ $projectDir && -d $projectDir ]];then
     pushd $projectDir #$HOME/dockerstore/ci-stack
 
     # define versions
-    rest_api_version=v2.3.4
+    rest_api_version=v2.3.8
     rest_client_version=v2.3.4
 
     #build images with tag
