@@ -8,98 +8,94 @@ function Replace-VersionForCISource {
     [CmdletBinding()]
     param(
         # ModuleName
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$file,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$startsWith,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$newLine,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$newVersion
     )
 
     $isReplaced = $false
     $contents = gc $file
     $data = [System.Collections.Generic.List[String]]::new()
-    foreach($line in $contents){
-        if($line.StartsWith($startsWith)){
+    foreach ($line in $contents) {
+        if ($line.StartsWith($startsWith)) {
             Write-Verbose "Replacing version on $line"
             $data.add($newline)
             $isReplaced = $true
-        }else{
+        }
+        else {
             $data.add($line)
         }
     }
 
     $data  | out-file -encoding ASCII $file
 
-    if($isReplaced){
+    if ($isReplaced) {
         Write-Verbose "Version replaced....$newVersion"
-    }else{
+    }
+    else {
         Write-Warning "Failed to replace version in $file"
     }
 }
 
 
-function Update-ServerCs ($version)
-{
+function Update-ServerCs ($version) {
     $param = @{
-        file = "$PSScriptroot\..\rest-api-dotnet\Controllers\v2\FoodsController.cs"
+        file       = "$PSScriptroot\..\rest-api-dotnet\Controllers\v2\FoodsController.cs"
         startsWith = "            return Ok("
-        newLine = '            return Ok("VERSION");'.Replace('VERSION',$version)
+        newLine    = '            return Ok("VERSION");'.Replace('VERSION', $version)
         newVersion = $version
     }
     Replace-VersionForCISource @param
 }
-function Update-ServerStackYml ($version)
-{
+function Update-ServerStackYml ($version) {
     $param = @{
-        file = "$PSScriptroot\..\stacks\Stackfile-REST.yml"
+        file       = "$PSScriptroot\..\stacks\Stackfile-REST.yml"
         startsWith = '    image: linBox:5000/restdotnet:v'
-        newLine = '    image: linBox:5000/restdotnet:vVERSION'.Replace('VERSION',$version)
+        newLine    = '    image: linBox:5000/restdotnet:vVERSION'.Replace('VERSION', $version)
         newVersion = $version
     }
     Replace-VersionForCISource @param
 }
 
-function Update-ServerBuildImage ($version)
-{
+function Update-ServerBuildImage ($version) {
     $param = @{
-        file = "$PSScriptroot\..\stacks\buildImages.sh"
+        file       = "$PSScriptroot\..\stacks\buildImages.sh"
         startsWith = '    rest_api_version=v'
-        newLine = '    rest_api_version=vVERSION'.Replace('VERSION',$version)
+        newLine    = '    rest_api_version=vVERSION'.Replace('VERSION', $version)
         newVersion = $version
     }
     Replace-VersionForCISource @param
 }
 
 
-function Update-ClientJson ($version)
-{
+function Update-ClientJson ($version) {
     $param = @{
-        file = "$PSScriptroot\..\rest-client-node\src\assets\config.json"
+        file       = "$PSScriptroot\..\rest-client-node\src\assets\config.json"
         startsWith = '  "name": "REST Client v'
-        newLine = '  "name": "REST Client vVERSION",'.Replace('VERSION',$version)
+        newLine    = '  "name": "REST Client vVERSION",'.Replace('VERSION', $version)
         newVersion = $version
     }
     Replace-VersionForCISource @param
 }
-function Update-ClientStackYml ($version)
-{
+function Update-ClientStackYml ($version) {
     $param = @{
-        file = "$PSScriptroot\..\stacks\Stackfile-REST.yml"
+        file       = "$PSScriptroot\..\stacks\Stackfile-REST.yml"
         startsWith = '    image: linBox:5000/restnode:v'
-        newLine = '    image: linBox:5000/restnode:vVERSION'.Replace('VERSION',$version)
+        newLine    = '    image: linBox:5000/restnode:vVERSION'.Replace('VERSION', $version)
         newVersion = $version
     }
     Replace-VersionForCISource @param
 }
-function Update-ClientBuildImage ($version)
-{
+function Update-ClientBuildImage ($version) {
     $param = @{
-        file = "$PSScriptroot\..\stacks\buildImages.sh"
+        file       = "$PSScriptroot\..\stacks\buildImages.sh"
         startsWith = '    rest_client_version=v'
-        newLine = '    rest_client_version=vVERSION'.Replace('VERSION',$version)
+        newLine    = '    rest_client_version=vVERSION'.Replace('VERSION', $version)
         newVersion = $version
     }
     Replace-VersionForCISource @param
@@ -109,17 +105,41 @@ function Update-ClientBuildImage ($version)
 
 $r = Read-Host -Prompt "Set Service version now? (y/n)"
 $setService = -not ($r -ne 'y')
-if($setService){
+if ($setService) {
     #prompt for manual entry
     $serviceVersion = Read-Host -Prompt "Enter the new version number for REST API Service (x.x.x)"
-    if($serviceVersion -and ($serviceVersion.Length -ge 5)){
-        #$file = "$PSScriptroot\..\rest-api-dotnet\Controllers\v2\FoodsController.cs".
-        Update-ServerCs $serviceVersion
-        Update-ServerStackYml $serviceVersion
-        Update-ServerBuildImage $serviceVersion
-    }else{
-        Write-Warning -Message "invalid version number specified.skipping update"
+    if ($serviceVersion -and ($serviceVersion.Length -ge 5)) {
+        #validated
+    }
+    else {
+        Write-Warning -Message "invalid version number specified.skipping update" -WarningAction Stop
     }
 }
 
+$r = Read-Host -Prompt "Set Client version now? (y/n)"
+$setClient = -not ($r -ne 'y')
+if ($setClient) {
+    #prompt for manual entry
+    $clientVersion = Read-Host -Prompt "Enter the new version number for REST API Service (x.x.x)"
+    if ($clientVersion -and ($clientVersion.Length -ge 5)) {
+        #validated
+    }
+    else {
+        Write-Warning -Message "invalid version number specified.skipping update" -WarningAction Stop
+    }
+}
+#perform update
+if ($setService) {
+    Update-ServerCs $serviceVersion
+    Update-ServerStackYml $serviceVersion
+    Update-ServerBuildImage $serviceVersion
+}
+if ($setClient) {
+    Update-ClientJson $clientVersion
+    Update-ClientStackYml $clientVersion
+    Update-ClientBuildImage $clientVersion
+}
+
+break
+#test area
 $VerbosePreference = 'continue'
