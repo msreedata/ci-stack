@@ -103,7 +103,7 @@ function Update-ClientBuildImage ($version) {
 
 
 
-$r = Read-Host -Prompt "Set Service version now? (y/n)"
+$r = Read-Host -Prompt "Set REST API Service version now? (y/n)"
 $setService = -not ($r -ne 'y')
 if ($setService) {
     #prompt for manual entry
@@ -116,11 +116,11 @@ if ($setService) {
     }
 }
 
-$r = Read-Host -Prompt "Set Client version now? (y/n)"
+$r = Read-Host -Prompt "`nSet Client version now? (y/n)"
 $setClient = -not ($r -ne 'y')
 if ($setClient) {
     #prompt for manual entry
-    $clientVersion = Read-Host -Prompt "Enter the new version number for REST API Service (x.x.x)"
+    $clientVersion = Read-Host -Prompt "Enter the new version number for client (x.x.x)"
     if ($clientVersion -and ($clientVersion.Length -ge 5)) {
         #validated
     }
@@ -138,6 +138,15 @@ if ($setClient) {
     Update-ClientJson $clientVersion
     Update-ClientStackYml $clientVersion
     Update-ClientBuildImage $clientVersion
+}
+#
+$r = Read-Host -Prompt "Commit changes? (y/n)"
+$shouldCommit = -not ($r -ne 'y')
+if($shouldCommit){
+    git add .
+    git commit -m "autoversion : svc $serviceVersion cli $clientVersion"
+}else{
+    Write-Warning "Please commit before update"
 }
 
 break
