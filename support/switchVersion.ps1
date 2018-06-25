@@ -143,8 +143,10 @@ if ($setClient) {
 $r = Read-Host -Prompt "Commit changes? (y/n)"
 $shouldCommit = -not ($r -ne 'y')
 if($shouldCommit){
+    pushd "$PSScriptroot\.."
     git add .
     git commit -m "autoversion : svc $serviceVersion cli $clientVersion"
+    popd
 }else{
     Write-Warning "Please commit before update"
 }
