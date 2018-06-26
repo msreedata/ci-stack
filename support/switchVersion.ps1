@@ -45,7 +45,7 @@ function Replace-VersionForCISource {
 
 function Update-ServerCs ($version) {
     $param = @{
-        file       = "$PSScriptroot\..\rest-api-dotnet\Controllers\v2\FoodsController.cs"
+        file       = "$PSScriptroot\..\rest-api-dotnet\ProductAPI\Controllers\v2\FoodsController.cs"
         startsWith = "            return Ok("
         newLine    = '            return Ok("VERSION");'.Replace('VERSION', $version)
         newVersion = $version
