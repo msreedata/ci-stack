@@ -61,17 +61,17 @@ else
 fi 
 
 #build latest docker image for testing
-echo "Project path :  $projectDir"
+echo "demo only--- Project path :  $projectDir"
 # sudo docker build ./rest-api-dotnet -t linBox:5000/restdotnet:${rest_api_version}
 # sudo docker build ./rest-client-node -t "linBox:5000/restnode:${rest_client_version}"
 
 #push image to registry
-echo "Pushing image :  $projectDir"
+echo "demo only--- Pushing image :  $projectDir"
 # sudo docker push linBox:5000/restdotnet:${rest_api_version}
 # sudo docker push linBox:5000/restnode:${rest_client_version}
 
 #update stack with new image
-echo "Deploying stack on Docker Swarm :  $projectDir"
+echo "demo only--- Deploying stack on Docker Swarm :  $projectDir"
 #. ./stacks/runStack.sh
 
 echo "------------ END of test batch ----------"
