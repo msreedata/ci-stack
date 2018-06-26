@@ -2,7 +2,7 @@ version: "3.4"
 services:
   
   dotnet:
-    image: linBox:5000/restdotnet:v2.3.33
+    image: linBox:5000/restdotnet:v2.3.35
     build:
       context: ./../rest-api-dotnet
     ports:
@@ -19,7 +19,7 @@ services:
         condition: any
 
   node:
-    image: linBox:5000/restnode:v2.3.35
+    image: linBox:5000/restnode:v2.3.38
     build:
       context: ./../rest-client-node
     ports:
