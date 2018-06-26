@@ -5,8 +5,8 @@
 projectDir=$(pwd)
 
     # define versions
-    rest_api_version=v2.3.20
-    rest_client_version=v2.3.20
+    rest_api_version=v2.3.21
+    rest_client_version=v2.3.21
 
 #install trusted certificate
 certfile=/etc/docker/certs.d/linBox:5000/ca.crt
@@ -15,21 +15,21 @@ if [ ! -e "$certfile" ]; then
     sudo mkdir -p /etc/docker/certs.d/linBox:5000
     sudo cp ./stacks/linBox.crt ${certfile}
 else 
-    echo "File exists"
+    echo "ca Certificate is already registered"
 fi 
-# sudo mkdir -p /etc/docker/certs.d/linBox:5000
-# sudo cp ./stacks/linBox.crt /etc/docker/certs.d/linBox:5000/ca.crt
 
 #build latest docker image for testing
 echo "Project path :  $projectDir"
-sudo docker build ./rest-api-dotnet -t linBox:5000/restdotnet:${rest_api_version}
-sudo docker build ./rest-client-node -t "linBox:5000/restnode:${rest_client_version}"
+# sudo docker build ./rest-api-dotnet -t linBox:5000/restdotnet:${rest_api_version}
+# sudo docker build ./rest-client-node -t "linBox:5000/restnode:${rest_client_version}"
 
 #push image to registry
-sudo docker push linBox:5000/restdotnet:${rest_api_version}
-sudo docker push linBox:5000/restnode:${rest_client_version}
+echo "Pushing image :  $projectDir"
+# sudo docker push linBox:5000/restdotnet:${rest_api_version}
+# sudo docker push linBox:5000/restnode:${rest_client_version}
 
 #update stack with new image
-echo "Project path :  $projectDir"
-. ./stacks/runStack.sh
+echo "Deploying stack on Docker Swarm :  $projectDir"
+#. ./stacks/runStack.sh
 
+echo "------------ END of test batch ----------"
