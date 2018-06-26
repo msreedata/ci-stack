@@ -5,15 +5,22 @@ do
 case "${option}"
 in
 p) PROJECT=${OPTARG};;
-d) DEPLOY=${OPTARG};;
+# boolean
+b) BUILD=${OPTARG};;
 t) TEST=${OPTARG};;
+d) DEPLOY=${OPTARG};;
+# value variables
+m) MODULE=${OPTARG};;
 r) REVISION=$OPTARG;;
 esac
 done
 
 echo "************** project=${PROJECT}"
+echo "************** deploy=${BUILD}"
+echo "************** deploy=${TEST}"
 echo "************** deploy=${DEPLOY}"
-echo "************** test=${TEST}"
+#
+echo "************** module=${MODULE}"
 echo "************** revision=${REVISION}"
 
 
