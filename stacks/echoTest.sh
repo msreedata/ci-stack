@@ -11,11 +11,13 @@ do
     VALUE=$(echo $ARGUMENT | cut -f2 -d=)
     case "$KEY" in
             project)    project=${VALUE} ;;
+            revision)   revision=${VALUE} ;;
             build)      build=${VALUE} ;;
             test)       test=${VALUE} ;;
             deploy)     deploy=${VALUE} ;;
             module)     module=${VALUE} ;;
-            revision)   revision=${VALUE} ;;
+            testing)   testing=${VALUE} ;;
+            notify)   notify=${VALUE} ;;
             notes)      notes=${VALUE} ;;
             *)
     esac
@@ -23,12 +25,16 @@ do
 done
 
 echo "************** project=${project}"
+echo "************** revision=${revision}"
+
 echo "************** build=${build}"
 echo "************** test=${test}"
 echo "************** deploy=${deploy}"
 #
 echo "************** module=${module}"
-echo "************** revision=${revision}"
+echo "************** testing=${testing}"
+echo "************** notify=${notify}"
+echo "************** notes=${notes}"
 
 
 
