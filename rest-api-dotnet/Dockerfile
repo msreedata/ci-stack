@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 5001
 
 # 5. Defult launch action : May be overriden in stackfile
-CMD dotnet run
+CMD dotnet run -p ProductAPI/ProductAPI.csproj
