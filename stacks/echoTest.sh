@@ -1,6 +1,5 @@
 #!/bin/bash
 #get parameters
-
 for ARGUMENT in "$@"
 do
 
@@ -24,8 +23,10 @@ do
 
 done
 
+echo "------------ START of test batch ----------"
+
 systemname=$(hostname -f)
-echo "Execution started on server ${systemname} from Jenkins job"
+echo "Executing Jenkins job on server : ${systemname}"
 
 echo "******** project = ${project}"
 echo "******** revision = ${revision}"
