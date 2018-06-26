@@ -1,3 +1,4 @@
+
 FROM microsoft/dotnet:2.1-sdk-alpine
 
 MAINTAINER inSreeMan@gmail.com
@@ -6,7 +7,7 @@ MAINTAINER inSreeMan@gmail.com
 RUN apk update && apk add --no-cache git
 
 # 2. Install project dependencies
-COPY *.csproj /src/
+COPY ./ProductAPI/ProductAPI.csproj /src/ProductAPI/
 WORKDIR /src/
 
 RUN dotnet restore
