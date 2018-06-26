@@ -1,4 +1,3 @@
-#!/bin/bash
 #get parameters
 
 for ARGUMENT in "$@"
