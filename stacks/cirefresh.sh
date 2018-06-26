@@ -5,7 +5,7 @@
 projectDir=$(pwd)
 
     # define versions
-    rest_api_version=v2.3.40
+    rest_api_version=v2.3.41
     rest_client_version=v2.3.41
 
 #install trusted certificate

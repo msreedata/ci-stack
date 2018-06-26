@@ -164,6 +164,11 @@ else {
     Write-Warning "Please commit before update"
 }
 
+#hold the window open if running from console, to view the results/verbose messages
+if($host.Name -notmatch 'ISE'){
+    Read-Host -Prompt "`n`nYou can push the commit now. Press Enter to close this window.`n"
+}
+
 break
 #test area
 $VerbosePreference = 'continue'
