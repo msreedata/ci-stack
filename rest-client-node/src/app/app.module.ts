@@ -9,6 +9,7 @@ import { RequestsService } from './services/requests.service';
 import { MainViewModule } from './components/main-view/main-view.module';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { Routing } from './app.routes';
+import { RouterModule, Routes } from '@angular/router';
 import {DataPathUtils} from './utils/dataPath.utils';
 import {UrlUtils} from './utils/url.utils';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpModule,
     CommonModule,
     Routing,
+    RouterModule,
     MainViewModule,
     ToastrModule.forRoot()
   ],

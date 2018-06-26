@@ -7,14 +7,15 @@ MAINTAINER inSreeMan@gmail.com
 # RUN apk update && apk add --no-cache git
 
 # 2. Install project dependencies
-# COPY ./package.json /src
-# RUN cd /src && npm install
+WORKDIR /src/
+# COPY ./package.json .
+# RUN npm install
 
 # 3. Update source code
-COPY . /src
+COPY . .
 
 # 4. Prelaunch actions
-# EXPOSE 80:4000
+EXPOSE 80:4000
 
 # 5. Defult launch action : May be overriden in stackfile
 # CMD ng serve --host $(hostname) --disable-host-check
