@@ -73,6 +73,9 @@ function Update-ServerBuildImage ($version) {
     #also update ci refresh
     $param.file = "$PSScriptroot\..\stacks\cirefresh.sh"
     Replace-VersionForCISource @param
+    #also update echoTest
+    $param.file = "$PSScriptroot\..\stacks\echoTest.sh"
+    Replace-VersionForCISource @param
 }
 
 
@@ -104,6 +107,9 @@ function Update-ClientBuildImage ($version) {
     Replace-VersionForCISource @param
     #also update ci refresh
     $param.file = "$PSScriptroot\..\stacks\cirefresh.sh"
+    Replace-VersionForCISource @param
+    #also update echoTest
+    $param.file = "$PSScriptroot\..\stacks\echoTest.sh"
     Replace-VersionForCISource @param
 }
 
@@ -148,12 +154,13 @@ if ($setClient) {
 #
 $r = Read-Host -Prompt "Commit changes? (y/n)"
 $shouldCommit = -not ($r -ne 'y')
-if($shouldCommit){
+if ($shouldCommit) {
     pushd "$PSScriptroot\.."
     git add .
     git commit -m "autoversion : svc $serviceVersion cli $clientVersion"
     popd
-}else{
+}
+else {
     Write-Warning "Please commit before update"
 }
 
