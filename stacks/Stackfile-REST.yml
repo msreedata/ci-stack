@@ -19,7 +19,7 @@ services:
         condition: any
 
   node:
-    image: linBox:5000/restnode:v2.3.15
+    image: linBox:5000/restnode:v2.3.20
     build:
       context: ./../rest-client-node
     ports:
