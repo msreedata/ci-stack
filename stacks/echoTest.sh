@@ -1,3 +1,4 @@
+#!/bin/bash
 #get parameters
 
 for ARGUMENT in "$@"
@@ -23,17 +24,17 @@ do
 
 done
 
-echo "************** project=${project}"
-echo "************** revision=${revision}"
+echo "******** project=${project}"
+echo "******** revision=${revision}"
 #
-echo "************** build=${build}"
-echo "************** test=${test}"
-echo "************** deploy=${deploy}"
+echo "******** build=${build}"
+echo "******** test=${test}"
+echo "******** deploy=${deploy}"
 #
-echo "************** module=${module}"
-echo "************** testing=${testing}"
-echo "************** notify=${notify}"
-echo "************** notes=${notes}"
+echo "******** module=${module}"
+echo "******** testing=${testing}"
+echo "******** notify=${notify}"
+echo "******** notes=${notes}"
 
 
 
