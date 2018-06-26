@@ -16,8 +16,8 @@ esac
 done
 
 echo "************** project=${PROJECT}"
-echo "************** deploy=${BUILD}"
-echo "************** deploy=${TEST}"
+echo "************** build=${BUILD}"
+echo "************** test=${TEST}"
 echo "************** deploy=${DEPLOY}"
 #
 echo "************** module=${MODULE}"
