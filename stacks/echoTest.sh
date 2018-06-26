@@ -1,4 +1,22 @@
 #!/bin/bash
+#get parameters
+while getopts p:d:t:r: option
+do
+case "${option}"
+in
+p) PROJECT=${OPTARG};;
+d) DEPLOY=${OPTARG};;
+t) TEST=${OPTARG};;
+r) REVISION=$OPTARG;;
+esac
+done
+
+echo "************** project=${PROJECT}"
+echo "************** deploy=${DEPLOY}"
+echo "************** test=${TEST}"
+echo "************** revision=${REVISION}"
+
+
 
 #initialize repo with folders and pull latest from git remote
 #This will be already done by CI #. ./stacks/initRepo.sh
