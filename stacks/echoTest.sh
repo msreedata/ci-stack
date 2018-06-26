@@ -12,15 +12,16 @@ do
     VALUE=$(echo $ARGUMENT | cut -f2 -d=)
 
     case "$KEY" in
-            project)    project=${VALUE} ;;
-            build)      build=${VALUE} ;;
-            test)       test=${VALUE} ;;
-            deploy)     deploy=${VALUE} ;;
-            module)     module=${VALUE} ;;
-            revision)   revision=${VALUE} ;;
-            notes)      notes=${VALUE} ;;
+            project)              project=${VALUE} ;;
+            build)    build=${VALUE} ;;
+            test)    test=${VALUE} ;;
+            deploy)    deploy=${VALUE} ;;
+            module)    module=${VALUE} ;;
+            revision)    revision=${VALUE} ;;
+            notes)    notes=${VALUE} ;;
             *)
     esac
+
 
 
 done
