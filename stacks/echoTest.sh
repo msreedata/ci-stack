@@ -1,27 +1,41 @@
 #!/bin/bash
 #get parameters
-while getopts p:d:t:r: option
+
+for ARGUMENT in "$@"
 do
-case "${option}"
-in
-p) PROJECT=${OPTARG};;
-# boolean
-b) BUILD=${OPTARG};;
-t) TEST=${OPTARG};;
-d) DEPLOY=${OPTARG};;
-# value variables
-m) MODULE=${OPTARG};;
-r) REVISION=$OPTARG;;
-esac
+
+    KEY=$(echo $ARGUMENT | cut -f1 -d=)
+    KEY="${KEY,,}"
+    KEY="${KEY/--/}"
+
+
+    VALUE=$(echo $ARGUMENT | cut -f2 -d=)
+
+    case "$KEY" in
+            project)              steps=${VALUE} ;;
+            build)    build=${VALUE} ;;
+            test)    test=${VALUE} ;;
+            deploy)    deploy=${VALUE} ;;
+            module)    module=${VALUE} ;;
+            revision)    revision=${VALUE} ;;
+            notes)    notes=${VALUE} ;;
+            *)
+    esac
+
+
 done
 
-echo "************** project=${PROJECT}"
-echo "************** build=${BUILD}"
-echo "************** test=${TEST}"
-echo "************** deploy=${DEPLOY}"
+echo "STEPS = $steps"
+echo "REPOSITORY_NAME = $REPOSITORY_NAME"
+
+
+echo "************** project=${project}"
+echo "************** build=${build}"
+echo "************** test=${test}"
+echo "************** deploy=${deploy}"
 #
-echo "************** module=${MODULE}"
-echo "************** revision=${REVISION}"
+echo "************** module=${module}"
+echo "************** revision=${revision}"
 
 
 
