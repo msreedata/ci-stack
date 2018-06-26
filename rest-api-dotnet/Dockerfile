@@ -8,6 +8,8 @@ RUN apk update && apk add --no-cache git
 
 # 2. Install project dependencies
 COPY ./ProductAPI/ProductAPI.csproj /src/ProductAPI/
+COPY ./Tests/Tests.csproj /src/Tests/
+COPY ./rest-api-dotnet.sln /src/
 WORKDIR /src/
 
 RUN dotnet restore
