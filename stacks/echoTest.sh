@@ -24,7 +24,8 @@ do
 
 done
 
-echo "Execution started on server ${hostname} from Jenkins job"
+systemname=$(hostname -f)
+echo "Execution started on server ${systemname} from Jenkins job"
 
 echo "******** project = ${project}"
 echo "******** revision = ${revision}"
