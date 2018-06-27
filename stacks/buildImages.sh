@@ -3,8 +3,8 @@ if [[ $projectDir && -d $projectDir ]];then
     pushd $projectDir #$HOME/dockerstore/ci-stack
 
     # define versions
-    rest_api_version=v2.3.41
-    rest_client_version=v2.3.41
+    rest_api_version=v1.2.3
+    rest_client_version=v3.2.1
 
     #build images with tag
     sudo docker build ./rest-api-dotnet -t linBox:5000/restdotnet:${rest_api_version}
