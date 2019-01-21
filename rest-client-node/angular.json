@@ -52,7 +52,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "port": 4000,
-            "host": "lindoce04", 
+            "host": "lincent4", 
             "browserTarget": "restclient:build"
           },
           "configurations": {
