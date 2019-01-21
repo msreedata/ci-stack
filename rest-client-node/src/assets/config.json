@@ -5,7 +5,7 @@
       "default": true,
       "name": "Foods",
       "id": "Foods",
-      "urlHost": "smtest1.westeurope.cloudapp.azure.com:5000",
+      "urlHost": "smlin.westeurope.cloudapp.azure.com:5002",
       "description": "RESTful API Service client for .Net Core service",
       "methods": {
         "getAll": {
