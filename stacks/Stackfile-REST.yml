@@ -11,7 +11,7 @@ services:
     working_dir: /src
     entrypoint: dotnet run -p ProductAPI/ProductAPI.csproj
     deploy:
-      replicas: 1
+      replicas: 2
       update_config:
         parallelism: 2
         delay: 10s
@@ -27,7 +27,7 @@ services:
     working_dir: /src
     entrypoint: "sh -c 'ng serve --host $${hostname} --disable-host-check'"
     deploy:
-      replicas: 1
+      replicas: 2
       update_config:
         parallelism: 2
         delay: 10s
