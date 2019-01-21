@@ -15,10 +15,10 @@ namespace SampleWebApiAspNetCore.Services
 
         public void EnsureSeedData()
         {
-            _repository.Add(new FoodItem() { Calories = 1000, Id = 1, Name = "Lasagne", Created = DateTime.Now });
-            _repository.Add(new FoodItem() { Calories = 1100, Id = 2, Name = "Hamburger", Created = DateTime.Now });
-            _repository.Add(new FoodItem() { Calories = 1200, Id = 3, Name = "Spaghetti", Created = DateTime.Now });
-            _repository.Add(new FoodItem() { Calories = 1300, Id = 4, Name = "Pizza", Created = DateTime.Now });
+            _repository.Add(new FoodItem() { Calories = 72, Id = 1, Name = "Apple", Created = DateTime.Now });
+            _repository.Add(new FoodItem() { Calories = 105, Id = 2, Name = "Banana", Created = DateTime.Now });
+            _repository.Add(new FoodItem() { Calories = 102, Id = 3, Name = "Egg", Created = DateTime.Now });
+            _repository.Add(new FoodItem() { Calories = 221, Id = 4, Name = "Spaghetti", Created = DateTime.Now });
         }
     }
 }
