@@ -1,0 +1,63 @@
+---
+- hosts: ubuntu
+  become: yes
+
+  tasks:
+    - name: update apt-get before installing docker
+      become: yes
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #One day
+
+    - name: install docker app
+      become: yes
+      command: apt-get --yes --force-yes install docker.io
+
+    - name: verify docker version
+      become: yes
+      command: docker version
+
+- name: whoami will run as the current user
+  hosts: cent
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+  tasks:
+    - local_action: command whoami
+      register: result
+    - debug: var=result
+
+- name: Setup Docker
+  hosts: cent
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+
+  tasks:
+    - name: Installing lvm2
+      yum: name=system-storage-manager state=present
+    #  when: ansible_os_family == "RedHat"
+
+    - name: Import Docker CE repository gpg key
+      rpm_key:
+        key: https://download.docker.com/linux/centos/gpg
+        state: present
+
+    - name: Add repository
+      become: yes
+      become_method: sudo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d
+        force: yes
+        owner: root
+        group: root
+        mode: 0644
+
+
+    - name: install docker ce
+      yum:
+        name: docker-ce
+        state: latest
+        update_cache: yes

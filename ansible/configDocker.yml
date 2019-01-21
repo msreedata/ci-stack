@@ -1,0 +1,26 @@
+---
+- name: Setup Docker
+  hosts: cent
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+
+- name: add a single line, in this case the same as the comment but uncommented
+  hosts: cent
+  become: yes
+  become_method: sudo
+  tasks:
+      - lineinfile: "dest=/etc/sudoers regexp='^linuxadmin' line='linuxadmin ALL=(ALL) NOPASSWD: ALL' state=present"
+      - name: create docker cert dir
+        file: path=/etc/docker/certs.d/linBox:5000 state=directory
+      - name: Install comodo cert
+        copy: src=linBox.crt dest=/etc/docker/certs.d/linBox:5000/ca.crt
+
+- name: Transfer and execute a script.
+  hosts: cent
+  become: yes
+  become_method: sudo
+  tasks:
+
+     - name: Copy and Execute the script 
+       script: ./configDocker.sh
