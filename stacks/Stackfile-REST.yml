@@ -23,7 +23,7 @@ services:
     build:
       context: ./../rest-client-node
     ports:
-      - "8011:4000"
+      - "8012:4000"
     working_dir: /src
     entrypoint: "sh -c 'ng serve --host $${hostname} --disable-host-check'"
     deploy:
