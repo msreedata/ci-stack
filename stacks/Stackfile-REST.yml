@@ -6,8 +6,8 @@ services:
     build:
       context: ./../rest-api-dotnet
     ports:
-      - "8010:5002"
-      - "8011:5001"
+      - "91:5002"
+      - "92:5001"
     working_dir: /src
     entrypoint: dotnet run -p ProductAPI/ProductAPI.csproj
     deploy:
@@ -23,7 +23,7 @@ services:
     build:
       context: ./../rest-client-node
     ports:
-      - "8012:4000"
+      - "90:4000"
     working_dir: /src
     entrypoint: "sh -c 'ng serve --host $${hostname} --disable-host-check'"
     deploy:
