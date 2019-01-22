@@ -5,8 +5,8 @@
 projectDir=$(pwd)
 
     # define versions
-    rest_api_version=v1.2.3
-    rest_client_version=v3.2.1
+    rest_api_version=v1.2.4
+    rest_client_version=v1.4.2
 
 #install trusted certificate
 certfile=/etc/docker/certs.d/linBox:5000/ca.crt
