@@ -3,9 +3,9 @@ stackName=restv2
 if [[ $projectDir && -d $projectDir ]];then
 
 if sudo docker node ls > /dev/null 2>&1; then
-  echo This node is already in Docker Swarm
+  echo This node is already in Docker Swarm as Master
 else
-  echo Initializing Docker Swarm mode now...
+  echo Initializing Docker Swarm mode now...Should fail here.
   sudo docker swarm init
 fi
 
