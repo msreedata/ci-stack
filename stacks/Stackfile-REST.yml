@@ -6,7 +6,7 @@ services:
     build:
       context: ./../rest-api-dotnet
     ports:
-      - "5002:5002"
+      - "8081:5002"
       - "5001:5001"
     working_dir: /src
     entrypoint: dotnet run -p ProductAPI/ProductAPI.csproj

@@ -52,7 +52,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "port": 4000,
-            "host": "linBox", 
+            "host": "lincent1", 
             "browserTarget": "restclient:build"
           },
           "configurations": {
